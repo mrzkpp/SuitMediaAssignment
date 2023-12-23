@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -32,6 +34,7 @@ public class ThirdActivity extends AppCompatActivity implements UserAdapter.OnIt
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
     private List<User> userList;
+    private ImageView backButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +51,16 @@ public class ThirdActivity extends AppCompatActivity implements UserAdapter.OnIt
         recyclerView.setAdapter(userAdapter);
 
         fetchDataFromApi();
+
+        backButton = findViewById(R.id.back);
+
+        ImageView backButton = findViewById(R.id.back);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed(); // This will simulate the back button press
+            }
+        });
     }
 
     private void fetchDataFromApi() {

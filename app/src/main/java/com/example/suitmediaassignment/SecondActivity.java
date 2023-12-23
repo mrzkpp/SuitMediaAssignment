@@ -9,7 +9,9 @@ import android.os.Bundle;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -20,6 +22,7 @@ public class SecondActivity extends AppCompatActivity {
 
     private TextView welcomeTextView, showNameTextView, selectedUserNameTextView;
     private Button chooseUserButton;
+    private ImageView backButton;
 
     private final BroadcastReceiver updateUserNameReceiver = new BroadcastReceiver() {
         @Override
@@ -43,6 +46,15 @@ public class SecondActivity extends AppCompatActivity {
         showNameTextView = findViewById(R.id.showNameTextView);
         selectedUserNameTextView = findViewById(R.id.selectedUserNameTextView);
         chooseUserButton = findViewById(R.id.chooseUserButton);
+        backButton = findViewById(R.id.back);
+
+        ImageView backButton = findViewById(R.id.back);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed(); // This will simulate the back button press
+            }
+        });
 
         // Get the name from the First Screen
         Intent intent = getIntent();
